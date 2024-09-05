@@ -1,5 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://petlove.b.goit.study/api";
-
-export default axios;
+export const instance = axios.create({
+  baseURL: "https://petlove.b.goit.study/api",
+});

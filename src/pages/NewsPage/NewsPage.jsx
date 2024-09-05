@@ -1,4 +1,5 @@
-import { News } from "../../components/News/News";
+import { NewsList } from "../../components/News/NewsList/NewsList";
+import { Title } from "../../components/Title/Title";
 import cl from "./NewsPage.module.scss";
 
 export const NewsPage = () => {
@@ -6,9 +7,9 @@ export const NewsPage = () => {
     <section className={cl.section}>
       <div>
         <div>
-          <h2>News</h2>
+          <Title pageTitle="News" />
         </div>
-        <News />
+        <NewsList />
       </div>
     </section>
   );
