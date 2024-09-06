@@ -1,7 +1,19 @@
-import { getNews } from "../../../redux/news";
+import PropTypes from "prop-types";
+import { NewsItem } from "../NewsItem/NewsItem";
 
-export const NewsList = () => {
-  console.log(getNews());
+import cl from "./NewsList.module.scss";
 
-  return <ul>NewsList</ul>;
+export const NewsList = ({ news }) => {
+  console.log(news);
+  return (
+    <ul className={cl.list}>
+      {news.map((item) => (
+        <NewsItem key={item._id} data={item} />
+      ))}
+    </ul>
+  );
+};
+
+NewsList.propTypes = {
+  news: PropTypes.array,
 };

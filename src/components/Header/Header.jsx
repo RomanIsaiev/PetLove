@@ -6,7 +6,7 @@ import cl from "./Header.module.scss";
 export const Header = () => {
   const location = useLocation();
   return (
-    <header className={cl.header}>
+    <header className={location.pathname === "/" ? cl.headerHome : cl.header}>
       <Container>
         <div
           className={
