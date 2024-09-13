@@ -13,7 +13,7 @@ export const NewsItem = ({ data }) => {
       <p className={cl.text}>{text}</p>
       <div className={cl.dateLinkContainer}>
         <span className={cl.date}>{formatDate}</span>
-        <a className={cl.link} href={url}>
+        <a className={cl.link} href={url} target="_blank">
           Read more
         </a>
       </div>

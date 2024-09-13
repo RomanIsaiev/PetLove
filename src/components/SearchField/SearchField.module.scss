@@ -1,0 +1,51 @@
+.inputContainer {
+  position: relative;
+}
+
+.input {
+  color: #262626;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+
+  padding: 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+}
+
+.input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+}
+
+.input:focus,
+.input:active {
+  outline: none;
+  border-color: #f6b83d;
+}
+
+.searchBtn {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+
+  background: none;
+  border: none;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 38px;
+  top: 14px;
+
+  background: none;
+  border: none;
+}

@@ -4,7 +4,6 @@ import { NewsItem } from "../NewsItem/NewsItem";
 import cl from "./NewsList.module.scss";
 
 export const NewsList = ({ news }) => {
-  console.log(news);
   return (
     <ul className={cl.list}>
       {news.map((item) => (
