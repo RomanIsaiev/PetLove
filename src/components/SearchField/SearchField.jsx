@@ -38,20 +38,10 @@ export const SearchField = ({ onSubmit, onClear }) => {
           placeholder="Search"
         />
         <button className={cl.searchBtn} type="button" onClick={handleSubmit}>
-          <img
-            width="18"
-            height="18"
-            src="../../../public/search-icon.svg"
-            alt=""
-          />
+          <img width="18" height="18" src="/search-icon.svg" alt="" />
         </button>
         <button className={cl.clearBtn} type="button" onClick={onClearField}>
-          <img
-            width="18"
-            height="18"
-            src="../../../public/cancel-cross.svg"
-            alt=""
-          />
+          <img width="18" height="18" src="/cancel-cross.svg" alt="" />
         </button>
       </div>
     </div>
