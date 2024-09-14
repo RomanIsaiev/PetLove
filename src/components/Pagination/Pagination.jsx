@@ -23,10 +23,20 @@ export const Pagination = ({ currentPage, totalPage, pageSelector }) => {
 
   return (
     <div className={cl.pagContainer}>
-      <button className={`${cl.baseBtn}  ${cl.arrows}`} onClick={firstPage}>
+      <button
+        className={`${cl.baseBtn}  ${cl.arrows} ${
+          currentPage === 1 && cl.disabledBtn
+        }`}
+        disabled={currentPage === 1}
+        onClick={firstPage}
+      >
         &#60;&#60;
       </button>
-      <button className={`${cl.baseBtn} `} onClick={prevPage}>
+      <button
+        className={`${cl.baseBtn} ${currentPage === 1 && cl.disabledBtn}`}
+        disabled={currentPage === 1}
+        onClick={prevPage}
+      >
         &#60;
       </button>
       {currentPage > 1 && (
@@ -52,10 +62,20 @@ export const Pagination = ({ currentPage, totalPage, pageSelector }) => {
           <span className={cl.dots}>...</span>
         </div>
       )}
-      <button className={`${cl.baseBtn}`} onClick={nextPage}>
+      <button
+        className={`${cl.baseBtn} ${
+          currentPage === totalPage && cl.disabledBtn
+        }`}
+        onClick={nextPage}
+      >
         &#62;
       </button>
-      <button className={`${cl.baseBtn} ${cl.arrows}`} onClick={lastPage}>
+      <button
+        className={`${cl.baseBtn} ${cl.arrows} ${
+          currentPage === totalPage && cl.disabledBtn
+        }`}
+        onClick={lastPage}
+      >
         &#62; &#62;
       </button>
     </div>
