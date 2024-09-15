@@ -9,6 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-style: normal;
+  background-color: var(--body-bg);
 }
 
 code {
@@ -260,4 +261,8 @@ body.is-hidden {
 
 span {
   z-index: 1;
+}
+
+.active {
+  border: 1px solid #f6b83d;
 }
