@@ -21,6 +21,10 @@ export const Pagination = ({ currentPage, totalPage, pageSelector }) => {
     pageSelector(currentPage + 1);
   };
 
+  const doubleNextPage = () => {
+    pageSelector(currentPage + 2);
+  };
+
   return (
     <div className={cl.pagContainer}>
       <button
@@ -53,7 +57,7 @@ export const Pagination = ({ currentPage, totalPage, pageSelector }) => {
         </button>
       )}
       {currentPage === 1 && (
-        <button className={`${cl.baseBtn}`} onClick={nextPage}>
+        <button className={`${cl.baseBtn}`} onClick={doubleNextPage}>
           {currentPage + 2}
         </button>
       )}
