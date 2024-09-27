@@ -3,7 +3,8 @@ import { NoticesList } from "../../components/Notices/NoticesList/NoticesList";
 import { Title } from "../../components/Title/Title";
 import { getNotices } from "../../redux/notices";
 import { Pagination } from "../../components/Pagination/Pagination";
-
+import cl from "./NoticesPage.module.scss";
+import { NoticesFilter } from "../../components/NoticesFilter/NoticesFilter";
 export const NoticesPage = () => {
   const [notices, setNotices] = useState([]);
   const [page, setPage] = useState(1);
@@ -18,6 +19,16 @@ export const NoticesPage = () => {
 
   const pageSelector = (page) => {
     setPage(page);
+  };
+
+  const getKeyword = (value) => {
+    setPage(1);
+    setKeyword(value);
+  };
+
+  const clearKeyword = () => {
+    setKeyword("");
+    setPage(1);
   };
 
   useEffect(() => {
@@ -50,11 +61,13 @@ export const NoticesPage = () => {
   }, [keyword, page, category, species, location, price, popularity]);
 
   return (
-    <section>
+    <section className={cl.section}>
       <div>
-        <Title pageTitle="Find your favorite pet" />
+        <div className={cl.title}>
+          <Title pageTitle="Find your favorite pet" />
+        </div>
         <div>
-          <h3>FILTERS</h3>
+          <NoticesFilter getKeyword={getKeyword} clearKeyword={clearKeyword} />
         </div>
         <NoticesList notices={notices} />
         <Pagination

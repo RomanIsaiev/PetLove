@@ -40,9 +40,11 @@ export const SearchField = ({ onSubmit, onClear }) => {
         <button className={cl.searchBtn} type="button" onClick={handleSubmit}>
           <img width="18" height="18" src="/search-icon.svg" alt="" />
         </button>
-        <button className={cl.clearBtn} type="button" onClick={onClearField}>
-          <img width="18" height="18" src="/cancel-cross.svg" alt="" />
-        </button>
+        {value && (
+          <button className={cl.clearBtn} type="button" onClick={onClearField}>
+            <img width="18" height="18" src="/cancel-cross.svg" alt="" />
+          </button>
+        )}
       </div>
     </div>
   );
