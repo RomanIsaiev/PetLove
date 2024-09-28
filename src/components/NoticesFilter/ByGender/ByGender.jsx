@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { getCategories } from "../../../redux/filters";
+import { getGenders } from "../../../redux/filters";
 import cl from "../Dropdown.module.scss";
-import css from "./Categories.module.scss";
+import css from "./ByGender.module.scss";
 
-export const Categories = ({ getCategory }) => {
-  const [categories, setCategories] = useState([]);
+export const ByGender = ({ getGender }) => {
+  const [genders, setGenders] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
     async function componentDidMount() {
       try {
-        await getCategories().then((response) => {
-          setCategories(response);
+        await getGenders().then((response) => {
+          setGenders(response);
         });
       } catch (error) {
         return error.message;
@@ -29,7 +29,7 @@ export const Categories = ({ getCategory }) => {
     const selected = event.target.dataset.value;
 
     if (event.target.hasAttribute("data-value")) {
-      getCategory(selected);
+      getGender(selected);
       setSelectedItem(selected);
     }
   };
@@ -37,7 +37,7 @@ export const Categories = ({ getCategory }) => {
   return (
     <div className={cl.container}>
       <div className={cl.titleBox} onClick={toggleDropdown}>
-        <p className={cl.title}>Category</p>
+        <p className={cl.title}>By gender</p>
         <img
           className={isDropdownOpen ? `${cl.icon}` : null}
           src="/arrow-down.svg"
@@ -45,17 +45,14 @@ export const Categories = ({ getCategory }) => {
         />
       </div>
       {isDropdownOpen && (
-        <ul
-          className={`${cl.list} ${css.categoryList}`}
-          onClick={selectCategory}
-        >
+        <ul className={`${cl.list} ${css.genderList}`} onClick={selectCategory}>
           <li
             className={`${cl.listItem} ${!selectedItem && "isActiveFilter"}`}
             data-value={""}
           >
             Show all
           </li>
-          {categories.map((item, index) => (
+          {genders.map((item, index) => (
             <li
               className={`${cl.listItem} ${
                 selectedItem === item && "isActiveFilter"

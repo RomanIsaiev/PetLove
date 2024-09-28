@@ -54,10 +54,12 @@ export const NewsPage = () => {
       <div>
         <div className={cl.titleSearchContainer}>
           <Title pageTitle="News" />
-          <SearchField
-            onSubmit={handleQuerySubmit}
-            onClear={handleClearQuery}
-          />
+          <div className={cl.searchContainer}>
+            <SearchField
+              onSubmit={handleQuerySubmit}
+              onClear={handleClearQuery}
+            />
+          </div>
         </div>
         <NewsList news={news} />
         {totalPages > 1 && (

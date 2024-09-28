@@ -1,6 +1,5 @@
 .inputContainer {
   position: relative;
-  max-width: 230px;
 }
 
 .input {
@@ -12,9 +11,10 @@
   line-height: 20px; /* 125% */
   letter-spacing: -0.48px;
 
+  width: 100%;
   padding: 14px;
   border-radius: 30px;
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: inherit;
 }
 
 .input::placeholder {
@@ -36,7 +36,7 @@
 .searchBtn {
   position: absolute;
   right: 14px;
-  top: 16px;
+  top: 15px;
 
   background: none;
   border: none;
@@ -45,7 +45,7 @@
 .clearBtn {
   position: absolute;
   right: 38px;
-  top: 16px;
+  top: 15px;
 
   background: none;
   border: none;

@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { getCategories } from "../../../redux/filters";
+import { getSpeciesList } from "../../../redux/filters";
 import cl from "../Dropdown.module.scss";
-import css from "./Categories.module.scss";
+import css from "./Species.module.scss";
 
-export const Categories = ({ getCategory }) => {
-  const [categories, setCategories] = useState([]);
+export const Species = ({ getSpecies }) => {
+  const [species, setSpecies] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
     async function componentDidMount() {
       try {
-        await getCategories().then((response) => {
-          setCategories(response);
+        await getSpeciesList().then((response) => {
+          setSpecies(response);
         });
       } catch (error) {
         return error.message;
@@ -29,7 +29,7 @@ export const Categories = ({ getCategory }) => {
     const selected = event.target.dataset.value;
 
     if (event.target.hasAttribute("data-value")) {
-      getCategory(selected);
+      getSpecies(selected);
       setSelectedItem(selected);
     }
   };
@@ -37,7 +37,7 @@ export const Categories = ({ getCategory }) => {
   return (
     <div className={cl.container}>
       <div className={cl.titleBox} onClick={toggleDropdown}>
-        <p className={cl.title}>Category</p>
+        <p className={cl.title}>By type</p>
         <img
           className={isDropdownOpen ? `${cl.icon}` : null}
           src="/arrow-down.svg"
@@ -46,7 +46,7 @@ export const Categories = ({ getCategory }) => {
       </div>
       {isDropdownOpen && (
         <ul
-          className={`${cl.list} ${css.categoryList}`}
+          className={`${cl.list} ${css.speciesList}`}
           onClick={selectCategory}
         >
           <li
@@ -55,7 +55,7 @@ export const Categories = ({ getCategory }) => {
           >
             Show all
           </li>
-          {categories.map((item, index) => (
+          {species.map((item, index) => (
             <li
               className={`${cl.listItem} ${
                 selectedItem === item && "isActiveFilter"

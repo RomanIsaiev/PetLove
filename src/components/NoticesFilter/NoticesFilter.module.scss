@@ -3,3 +3,23 @@
   border-radius: 30px;
   background: #fff4df;
 }
+
+.searchContainer {
+  max-width: 265px;
+}
+
+.selectFilters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.categoryContainer {
+  max-width: 200px;
+  width: 100%;
+}
+
+.genderContainer {
+  max-width: 190px;
+  width: 100%;
+}

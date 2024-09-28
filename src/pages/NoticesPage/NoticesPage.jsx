@@ -5,11 +5,13 @@ import { getNotices } from "../../redux/notices";
 import { Pagination } from "../../components/Pagination/Pagination";
 import cl from "./NoticesPage.module.scss";
 import { NoticesFilter } from "../../components/NoticesFilter/NoticesFilter";
+import { set } from "date-fns";
 export const NoticesPage = () => {
   const [notices, setNotices] = useState([]);
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
+  const [gender, setGender] = useState("");
   const [species, setSpecies] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState(true);
@@ -35,6 +37,14 @@ export const NoticesPage = () => {
     setCategory(value);
   };
 
+  const getGender = (value) => {
+    setGender(value);
+  };
+
+  const getSpecies = (value) => {
+    setSpecies(value);
+  };
+
   useEffect(() => {
     async function componentDidUpdate() {
       try {
@@ -46,7 +56,8 @@ export const NoticesPage = () => {
           species,
           location,
           price,
-          popularity
+          popularity,
+          gender
         ).then((response) => {
           setTotalPages(response.totalPages);
           if (!response.results.length) {
@@ -62,7 +73,7 @@ export const NoticesPage = () => {
     }
 
     componentDidUpdate();
-  }, [keyword, page, category, species, location, price, popularity]);
+  }, [keyword, page, category, species, location, price, popularity, gender]);
 
   return (
     <section className={cl.section}>
@@ -75,6 +86,8 @@ export const NoticesPage = () => {
             getKeyword={getKeyword}
             clearKeyword={clearKeyword}
             getCategory={getCategory}
+            getGender={getGender}
+            getSpecies={getSpecies}
           />
         </div>
         <NoticesList notices={notices} />

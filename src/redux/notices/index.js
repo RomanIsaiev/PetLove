@@ -7,10 +7,11 @@ export const getNotices = async (
   species = "",
   location = "",
   price = false,
-  popularity = false
+  popularity = false,
+  sex = ""
 ) => {
   const { data } = await instance.get(
-    `/notices?page=${page}&keyword=${keyword}&category=${category}&species=${species}&locationId=${location}&byPrice${price}&byPopularity=${popularity}`
+    `/notices?page=${page}&keyword=${keyword}&category=${category}&species=${species}&locationId=${location}&byPrice${price}&byPopularity=${popularity}&sex=${sex}`
   );
   return data;
 };
