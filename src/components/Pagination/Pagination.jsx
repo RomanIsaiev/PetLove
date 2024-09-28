@@ -33,8 +33,6 @@ export const Pagination = ({ currentPage, totalPage, pageSelector }) => {
     pageSelector(currentPage + 2);
   };
 
-  console.log(totalPage);
-
   return (
     totalPage !== 1 && (
       <div className={cl.pagContainer}>

@@ -1,20 +1,14 @@
 import { SearchField } from "../SearchField/SearchField";
 import { Categories } from "./Categories/Categories";
+import cl from "./NoticesFilter.module.scss";
 
-export const NoticesFilter = ({ getKeyword, clearKeyword }) => {
-  const getValue = (value) => {
-    console.log(value);
-    getKeyword(value);
-  };
-
-  const clearValue = () => {
-    clearKeyword();
-  };
-
+export const NoticesFilter = ({ getKeyword, clearKeyword, getCategory }) => {
   return (
-    <div>
-      <SearchField onSubmit={getValue} onClear={clearValue} />
-      <Categories />
+    <div className={cl.container}>
+      <div>
+        <SearchField onSubmit={getKeyword} onClear={clearKeyword} />
+        <Categories getCategory={getCategory} />
+      </div>
     </div>
   );
 };

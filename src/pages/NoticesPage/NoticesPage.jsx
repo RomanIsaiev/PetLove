@@ -31,6 +31,10 @@ export const NoticesPage = () => {
     setPage(1);
   };
 
+  const getCategory = (value) => {
+    setCategory(value);
+  };
+
   useEffect(() => {
     async function componentDidUpdate() {
       try {
@@ -67,7 +71,11 @@ export const NoticesPage = () => {
           <Title pageTitle="Find your favorite pet" />
         </div>
         <div>
-          <NoticesFilter getKeyword={getKeyword} clearKeyword={clearKeyword} />
+          <NoticesFilter
+            getKeyword={getKeyword}
+            clearKeyword={clearKeyword}
+            getCategory={getCategory}
+          />
         </div>
         <NoticesList notices={notices} />
         <Pagination

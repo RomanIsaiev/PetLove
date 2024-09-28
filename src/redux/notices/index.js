@@ -12,6 +12,5 @@ export const getNotices = async (
   const { data } = await instance.get(
     `/notices?page=${page}&keyword=${keyword}&category=${category}&species=${species}&locationId=${location}&byPrice${price}&byPopularity=${popularity}`
   );
-  console.log(data);
   return data;
 };
