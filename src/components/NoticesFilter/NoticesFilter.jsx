@@ -1,6 +1,7 @@
 import { SearchField } from "../SearchField/SearchField";
 import { ByGender } from "./ByGender/ByGender";
 import { Categories } from "./Categories/Categories";
+import { Cities } from "./Cities/Cities";
 import cl from "./NoticesFilter.module.scss";
 import { Species } from "./Species/Species";
 
@@ -10,6 +11,7 @@ export const NoticesFilter = ({
   getCategory,
   getGender,
   getSpecies,
+  getLocation,
 }) => {
   return (
     <div className={cl.container}>
@@ -25,6 +27,9 @@ export const NoticesFilter = ({
         </div>
         <div className={cl.genderContainer}>
           <Species getSpecies={getSpecies} />
+        </div>
+        <div className={cl.locationContainer}>
+          <Cities getLocation={getLocation} />
         </div>
       </div>
     </div>

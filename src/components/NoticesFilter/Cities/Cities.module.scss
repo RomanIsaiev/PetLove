@@ -1,0 +1,23 @@
+.inputContainer {
+  position: relative;
+}
+
+.searchBtn {
+  position: absolute;
+  z-index: 999;
+  right: 14px;
+  top: 15px;
+
+  background: none;
+  border: none;
+}
+
+.clearBtn {
+  position: absolute;
+  z-index: 999;
+  right: 38px;
+  top: 15px;
+
+  background: none;
+  border: none;
+}

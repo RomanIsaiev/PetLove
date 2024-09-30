@@ -45,6 +45,12 @@ export const NoticesPage = () => {
     setSpecies(value);
   };
 
+  const getLocation = (value) => {
+    setLocation(value);
+  };
+
+  console.log("notices location check", location);
+
   useEffect(() => {
     async function componentDidUpdate() {
       try {
@@ -60,7 +66,7 @@ export const NoticesPage = () => {
           gender
         ).then((response) => {
           setTotalPages(response.totalPages);
-          if (!response.results.length) {
+          if (!response.results) {
             return;
           }
           setNotices(response.results);
@@ -88,6 +94,7 @@ export const NoticesPage = () => {
             getCategory={getCategory}
             getGender={getGender}
             getSpecies={getSpecies}
+            getLocation={getLocation}
           />
         </div>
         <NoticesList notices={notices} />
