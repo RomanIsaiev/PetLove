@@ -18,93 +18,17 @@ export const NoticesFilter = ({
 }) => {
   const [currentValue, setCurrentValue] = useState("");
 
-  // const selectValue = (event) => {
-  //   if (event.target.hasAttribute("data-radio")) {
-  //     setCurrentValue(event.target.dataset.radio);
-  //   }
-  // };
-
-  // console.log("currentValue", currentValue);
-  // switch (currentValue) {
-  //   case "popular":
-  //     currentValue === "popular" ? getPopular(false) : getPopular(true);
-
-  //     break;
-  //   case "unpopular":
-  //     getPopular(true);
-  //     console.log("set - Unpopular");
-  //     break;
-  //   case "cheap":
-  //     getPrice(false);
-  //     console.log("set - cheap");
-  //     break;
-  //   case "expensive":
-  //     getPrice(true);
-  //     console.log("set - expensive");
-  //     break;
-  // }
-
-  // const handleButtonClick = (buttonName) => {
-  //   if (currentValue === buttonName) {
-  //     // Если нажимаем на уже активную кнопку, деактивируем её
-  //     setCurrentValue("");
-  //     if (buttonName === "popular" || buttonName === "unpopular") {
-  //       getPopular(null); // Деактивируем фильтр популярности
-  //     } else {
-  //       getPrice(null); // Деактивируем фильтр цены
-  //     }
-  //   } else {
-  //     // Активируем нажатую кнопку и деактивируем другие
-  //     setCurrentValue(buttonName);
-  //     if (buttonName === "popular") {
-  //       getPopular(false); // Активируем фильтр Popular
-  //     } else if (buttonName === "unpopular") {
-  //       getPopular(true); // Активируем фильтр Unpopular
-  //     } else if (buttonName === "cheap") {
-  //       getPrice(false); // Активируем фильтр Cheap
-  //     } else if (buttonName === "expensive") {
-  //       getPrice(true); // Активируем фильтр Expensive
-  //     }
-  //   }
-  // };
-
-  const setPopular = () => {
-    if (currentValue === "popular") {
+  const handleButtonClick = (value, type) => {
+    if (currentValue === value) {
       setCurrentValue("");
-      getPopular(true);
+      type === "popularity" ? getPopular(null) : getPrice(null);
     } else {
-      setCurrentValue("popular");
-      getPopular(false);
-    }
-  };
-
-  const setUnpopular = () => {
-    if (currentValue === "unpopular") {
-      setCurrentValue("");
-      getPopular(true);
-    } else {
-      setCurrentValue("unpopular");
-      getPopular(true);
-    }
-  };
-
-  const setCheap = () => {
-    if (currentValue === "cheap") {
-      setCurrentValue("");
-      getPrice(false);
-    } else {
-      setCurrentValue("cheap");
-      getPrice(true);
-    }
-  };
-
-  const setExpensive = () => {
-    if (currentValue === "expensive") {
-      setCurrentValue("");
-      getPrice(true);
-    } else {
-      setCurrentValue("expensive");
-      getPrice(false);
+      setCurrentValue(value);
+      if (type === "popularity") {
+        getPopular(value === "popular" ? false : true);
+      } else {
+        getPrice(value === "cheap" ? false : true);
+      }
     }
   };
 
@@ -133,7 +57,7 @@ export const NoticesFilter = ({
             className={`${cl.radioBtn} ${
               currentValue === "popular" && "btnActive"
             }`}
-            onClick={setPopular}
+            onClick={() => handleButtonClick("popular", "popularity")}
             data-radio="popular"
           >
             Popular
@@ -144,7 +68,7 @@ export const NoticesFilter = ({
             className={`${cl.radioBtn} ${
               currentValue === "unpopular" && "btnActive"
             }`}
-            onClick={setUnpopular}
+            onClick={() => handleButtonClick("unpopular", "popularity")}
             data-radio="unpopular"
           >
             Unpopular
@@ -155,7 +79,7 @@ export const NoticesFilter = ({
             className={`${cl.radioBtn} ${
               currentValue === "cheap" && "btnActive"
             }`}
-            onClick={setCheap}
+            onClick={() => handleButtonClick("cheap", "price")}
             data-radio="cheap"
           >
             Cheap
@@ -166,7 +90,7 @@ export const NoticesFilter = ({
             className={`${cl.radioBtn} ${
               currentValue === "expensive" && "btnActive"
             }`}
-            onClick={setExpensive}
+            onClick={() => handleButtonClick("expensive", "price")}
             data-radio="expensive"
           >
             Expensive
