@@ -270,3 +270,22 @@ span {
 .isActiveFilter {
   color: #f6b83d;
 }
+
+.btnActive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #fff;
+  background: #f6b83d;
+}
+
+.btnActive::after {
+  content: "";
+  display: block;
+  height: 18px;
+  width: 18px;
+  background-image: url(/radio-close.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -5,7 +5,7 @@ import { getNotices } from "../../redux/notices";
 import { Pagination } from "../../components/Pagination/Pagination";
 import cl from "./NoticesPage.module.scss";
 import { NoticesFilter } from "../../components/NoticesFilter/NoticesFilter";
-import { set } from "date-fns";
+
 export const NoticesPage = () => {
   const [notices, setNotices] = useState([]);
   const [page, setPage] = useState(1);
@@ -14,8 +14,8 @@ export const NoticesPage = () => {
   const [gender, setGender] = useState("");
   const [species, setSpecies] = useState("");
   const [location, setLocation] = useState("");
-  const [price, setPrice] = useState(true);
-  const [popularity, setPopularity] = useState(false);
+  const [price, setPrice] = useState(false);
+  const [popularity, setPopularity] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,7 +49,13 @@ export const NoticesPage = () => {
     setLocation(value);
   };
 
-  console.log("notices location check", location);
+  const getPopular = (value) => {
+    setPopularity(value);
+  };
+
+  const getPrice = (value) => {
+    setPrice(value);
+  };
 
   useEffect(() => {
     async function componentDidUpdate() {
@@ -95,6 +101,8 @@ export const NoticesPage = () => {
             getGender={getGender}
             getSpecies={getSpecies}
             getLocation={getLocation}
+            getPopular={getPopular}
+            getPrice={getPrice}
           />
         </div>
         <NoticesList notices={notices} />

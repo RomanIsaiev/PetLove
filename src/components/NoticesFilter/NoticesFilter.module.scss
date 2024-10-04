@@ -12,6 +12,10 @@
   display: flex;
   align-items: center;
   gap: 16px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(38, 38, 38, 0.1);
+  margin-bottom: 20px;
 }
 
 .categoryContainer {
@@ -27,4 +31,30 @@
 .locationContainer {
   max-width: 227px;
   width: 100%;
+}
+
+// radio filters
+
+.radioContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radioBtn {
+  color: #262626;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+
+  padding: 14px;
+  border-radius: 30px;
+  background: #fff;
+  border: inherit;
+}
+
+.popularContainer {
 }

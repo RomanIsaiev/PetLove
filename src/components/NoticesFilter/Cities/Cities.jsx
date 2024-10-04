@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import { getCities } from "../../../redux/cities";
@@ -44,22 +44,22 @@ export const Cities = ({ getLocation }) => {
   };
 
   const handleChange = (selectedOption) => {
-    console.log(selectedOption);
     setValue(selectedOption.label);
     setSelectedCity(selectedOption);
-    console.log("Выбранный город:", selectedOption);
   };
-
-  console.log("selectedCity", selectedCity);
 
   const submitLocation = () => {
-    console.log(selectedCity.value);
     return getLocation(selectedCity.value);
   };
+
+  const selectRef = useRef(null);
 
   const clearLocation = () => {
     setSelectedCity({ value: "", label: "" });
     setValue("");
+    if (selectRef.current) {
+      selectRef.current.clearValue();
+    }
     return getLocation("");
   };
 
@@ -86,13 +86,113 @@ export const Cities = ({ getLocation }) => {
     );
   };
 
-  const handleInputChange = (newValue) => {
-    setValue(newValue);
-    console.log("newValue", newValue);
-    // return newValue;
+  const getValue = ({ inputValue }) => {
+    console.log("inputValue", inputValue);
   };
 
+  const handleInputChange = (newValue) => {
+    setValue(newValue);
+  };
+
+  // const customStyles = {
+  //   value: (styles) => ({
+  //     ...styles,
+  //     margin: "0",
+  //     color: "#262626",
+  //   }),
+  //   singleValue: (provided) => ({
+  //     ...provided,
+  //     display: "-webkit-box",
+  //     color: "#262626",
+  //     fontFamily: "Manrope",
+  //     fontWeight: "500",
+  //     fontSize: "16px",
+  //     lineHeight: "20px",
+  //     letterSpacing: "-0.48px",
+  //     margin: "0",
+  //     padding: "0",
+  //     maxWidth: "150px",
+  //     overflow: "hidden",
+  //     textOverflow: "ellipsis",
+  //   }),
+  //   control: (provided) => ({
+  //     ...provided,
+  //     color: "#262626",
+  //     padding: "0",
+  //     margin: "0",
+  //     width: "227px",
+  //     height: "48px",
+  //     borderRadius: "30px",
+  //     backgroundColor: "#fff",
+  //     border: "inherit",
+  //     boxShadow: "none",
+  //     "&:hover": {
+  //       borderColor: "darkblue",
+  //     },
+  //   }),
+  //   option: (provided) => ({
+  //     ...provided,
+  //     color: "#262626",
+  //     "&:hover": {
+  //       backgroundColor: "#fff4df",
+  //       color: "#262626",
+  //       borderRadius: "30px",
+  //     },
+  //   }),
+  //   menu: (provider) => ({
+  //     ...provider,
+  //     marginTop: "4px",
+  //     padding: "14px",
+  //     borderRadius: "15px",
+  //     backgroundColor: "#fff",
+  //     border: "none",
+  //     boxShadow: "none",
+  //   }),
+  //   dropdownIndicator: (provided) => ({
+  //     ...provided,
+  //     display: "none",
+  //   }),
+  //   placeholder: (provided) => ({
+  //     ...provided,
+  //     color: "#262626",
+  //   }),
+  //   input: (styles) => ({
+  //     ...styles,
+  //     color: "#262626",
+  //   }),
+  //   indicatorSeparator: (provided) => ({
+  //     ...provided,
+  //     display: "none",
+  //   }),
+  //   valueInput: (styles) => ({
+  //     ...styles,
+  //     color: "#262626",
+  //   }),
+  // };
+
+  // console.log("value", value);
+
   const customStyles = {
+    container: (styles) => ({
+      ...styles,
+      width: "227px",
+      border: "none",
+    }),
+    control: (provided, state) => ({
+      // ...provided,
+      padding: "8px",
+      height: "48px",
+      backgroundColor: "#fff",
+      border: "1px solid #FFF4DF",
+      borderColor: state.isFocused ? "#F6B83D" : "#FFF4DF",
+      borderRadius: "30px",
+    }),
+    indicatorSeparator: () => ({
+      display: "none",
+    }),
+    dropdownIndicator: () => ({
+      display: "none",
+    }),
     singleValue: (provided) => ({
       ...provided,
       display: "-webkit-box",
@@ -108,28 +208,14 @@ export const Cities = ({ getLocation }) => {
       overflow: "hidden",
       textOverflow: "ellipsis",
     }),
-    control: (provided) => ({
+    placeholder: (provided) => ({
       ...provided,
-      padding: "0",
-      margin: "0",
-      width: "227px",
-      height: "48px",
-      borderRadius: "30px",
-      backgroundColor: "#fff",
-      border: "inherit",
-      boxShadow: "none",
-      "&:hover": {
-        borderColor: "darkblue",
-      },
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      color: state.isSelected ? "white" : "black",
-      "&:hover": {
-        backgroundColor: "#fff4df",
-        color: "black",
-        borderRadius: "30px",
-      },
+      // color: "#262626",
+      // fontFamily: "Manrope",
+      // fontWeight: "500",
+      // fontSize: "16px",
+      // lineHeight: "20px",
+      // letterSpacing: "-0.48px",
     }),
     menu: (provider) => ({
       ...provider,
@@ -140,21 +226,7 @@ export const Cities = ({ getLocation }) => {
       border: "none",
       boxShadow: "none",
     }),
-    dropdownIndicator: (provided) => ({
-      ...provided,
-      display: "none",
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      color: "black",
-    }),
-    indicatorSeparator: (provided) => ({
-      ...provided,
-      display: "none",
-    }),
   };
-
-  console.log("value", value);
 
   return (
     <div className={cl.inputContainer}>
@@ -162,11 +234,13 @@ export const Cities = ({ getLocation }) => {
         loadOptions={(inputValue, callback) =>
           loadOptions(inputValue, callback, cities)
         }
+        ref={selectRef}
         onChange={handleChange}
         onInputChange={handleInputChange}
         defaultOptions
         placeholder="Location"
         styles={customStyles}
+        getValue={getValue}
         formatOptionLabel={formatOptionLabel}
       />
       <button className={cl.searchBtn} type="button" onClick={submitLocation}>

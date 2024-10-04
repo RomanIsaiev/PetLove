@@ -10,8 +10,19 @@ export const getNotices = async (
   popularity = false,
   sex = ""
 ) => {
-  const { data } = await instance.get(
-    `/notices?page=${page}&keyword=${keyword}&category=${category}&species=${species}&locationId=${location}&byPrice${price}&byPopularity=${popularity}&sex=${sex}`
-  );
+  const queryParams = [
+    `page=${page}`,
+    keyword && `keyword=${keyword}`,
+    category && `category=${category}`,
+    species && `species=${species}`,
+    location && `locationId=${location}`,
+    price && `byPrice=${price}`,
+    popularity && `byPopularity=${popularity}`,
+    sex && `sex=${sex}`,
+  ]
+    .filter(Boolean)
+    .join("&");
+
+  const { data } = await instance.get(`/notices?${queryParams}`);
   return data;
 };
