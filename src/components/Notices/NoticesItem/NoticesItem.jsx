@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import { format } from "date-fns";
 import cl from "./NoticesItem.module.scss";
 
-export const NoticesItem = ({ data }) => {
+export const NoticesItem = ({ data, openModal }) => {
   const {
     birthday,
     category,
     comment,
     imgURL,
-    location,
     name,
     popularity,
     sex,
@@ -54,7 +53,9 @@ export const NoticesItem = ({ data }) => {
         <p className={cl.comment}>{comment}</p>
       </div>
       <div className={cl.btnContainer}>
-        <button className={cl.learnMore}>Learn more</button>
+        <button className={cl.learnMore} onClick={openModal}>
+          Learn more
+        </button>
         <button className={cl.favBtn}>Fav</button>
       </div>
     </li>

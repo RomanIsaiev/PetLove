@@ -5,6 +5,7 @@ import { getNotices } from "../../redux/notices";
 import { Pagination } from "../../components/Pagination/Pagination";
 import cl from "./NoticesPage.module.scss";
 import { NoticesFilter } from "../../components/NoticesFilter/NoticesFilter";
+import { ModalAttention } from "../../components/Modals/ModalAttention/ModalAttention";
 
 export const NoticesPage = () => {
   const [notices, setNotices] = useState([]);
@@ -18,6 +19,7 @@ export const NoticesPage = () => {
   const [popularity, setPopularity] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const pageSelector = (page) => {
     setPage(page);
@@ -57,8 +59,18 @@ export const NoticesPage = () => {
     setPrice(value);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = (event) => {
+    if (event.target.hasAttribute("data-area")) {
+      setIsModalOpen(false);
+    }
+  };
+
   useEffect(() => {
-    async function componentDidUpdate() {
+    const fetchNotice = async () => {
       try {
         setIsLoading(true);
         await getNotices(
@@ -78,13 +90,13 @@ export const NoticesPage = () => {
           setNotices(response.results);
         });
       } catch (error) {
-        return error.message;
+        return console.error(error.message);
       } finally {
         setIsLoading(false);
       }
-    }
+    };
 
-    componentDidUpdate();
+    fetchNotice();
   }, [keyword, page, category, species, location, price, popularity, gender]);
 
   return (
@@ -105,12 +117,13 @@ export const NoticesPage = () => {
             getPrice={getPrice}
           />
         </div>
-        <NoticesList notices={notices} />
+        <NoticesList notices={notices} openModal={openModal} />
         <Pagination
           currentPage={page}
           totalPage={totalPages}
           pageSelector={pageSelector}
         />
+        <ModalAttention isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </section>
   );
