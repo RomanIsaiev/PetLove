@@ -1,0 +1,41 @@
+.input {
+  padding: 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  width: 100%;
+
+  margin-bottom: 16px;
+}
+
+.lastInput {
+  margin-bottom: 32px;
+}
+
+.input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+}
+
+.sumbitBtn {
+  display: block;
+  padding: 16px;
+  color: #fff;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  background: #f6b83d;
+  border: inherit;
+  width: 100%;
+
+  margin-bottom: 16px;
+}

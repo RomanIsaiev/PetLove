@@ -1,0 +1,86 @@
+.imageBox {
+  position: relative;
+
+  width: 592px;
+  height: 654px;
+}
+
+.backgroundImage {
+  object-fit: cover;
+}
+
+.userCommentContainer {
+  position: absolute;
+  left: 61px;
+  bottom: 97px;
+
+  display: flex;
+  gap: 8px;
+
+  max-width: 294px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.iconContainer {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff4df;
+}
+
+.icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.infoContainer {
+  width: 194px;
+}
+
+.petInfoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.name {
+  color: #f6b83d;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+}
+
+.birthday {
+  color: rgba(38, 38, 38, 0.5);
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 116.667% */
+  letter-spacing: -0.24px;
+}
+
+.birthday span {
+  color: #262626;
+}
+
+.comment {
+  color: rgba(38, 38, 38, 0.8);
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 116.667% */
+  letter-spacing: -0.24px;
+}

@@ -56,7 +56,9 @@ export const NoticesItem = ({ data, openModal }) => {
         <button className={cl.learnMore} onClick={openModal}>
           Learn more
         </button>
-        <button className={cl.favBtn}>Fav</button>
+        <button className={cl.favBtn} onClick={openModal}>
+          Fav
+        </button>
       </div>
     </li>
   );

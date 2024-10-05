@@ -1,6 +1,6 @@
 import cl from "./ModalAttention.module.scss";
 
-export const ModalAttention = ({ isOpen, onClose, children }) => {
+export const ModalAttention = ({ isOpen, onClose }) => {
   if (!isOpen) {
     return null;
   }
