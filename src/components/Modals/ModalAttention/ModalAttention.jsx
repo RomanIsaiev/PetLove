@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import cl from "./ModalAttention.module.scss";
 
 export const ModalAttention = ({ isOpen, onClose }) => {
@@ -26,8 +27,12 @@ export const ModalAttention = ({ isOpen, onClose }) => {
           register to access these features.
         </p>
         <div className={cl.btnsContainer}>
-          <button className={`${cl.logBtn} ${cl.baseBtn}`}>Log In</button>
-          <button className={`${cl.regBtn} ${cl.baseBtn}`}>Registration</button>
+          <Link to="/login" className={`${cl.logBtn} ${cl.baseBtn}`}>
+            Log In
+          </Link>
+          <Link to="/register" className={`${cl.regBtn} ${cl.baseBtn}`}>
+            Registration
+          </Link>
         </div>
       </div>
     </div>

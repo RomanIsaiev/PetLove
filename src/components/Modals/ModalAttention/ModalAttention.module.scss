@@ -82,11 +82,13 @@
 }
 
 .baseBtn {
+  display: block;
   padding: 14px;
   border-radius: 30px;
   border: inherit;
 
   font-family: Manrope;
+  text-align: center;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

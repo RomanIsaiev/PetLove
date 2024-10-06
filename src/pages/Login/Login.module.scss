@@ -1,4 +1,10 @@
 .container {
+  padding-top: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 116px;
 }
 
 .formBlock {

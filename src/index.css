@@ -289,3 +289,11 @@ span {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.inputFalse {
+  border: 1px solid #ef2447;
+}
+
+.inputTrue {
+  border: 1px solid #08aa83;
+}
