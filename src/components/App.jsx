@@ -7,8 +7,10 @@ import { NoticesPage } from "../pages/NoticesPage/NoticesPage";
 import { Login } from "../pages/Login/Login";
 import { Registration } from "../pages/Registration/Registration";
 import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const App = () => {
+  const isAuthenticated = !!localStorage.getItem("userData");
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -18,7 +20,9 @@ export const App = () => {
         <Route path="friends" element={<OurFriends />} />
         <Route path="register" element={<Registration />} />
         <Route path="login" element={<Login />} />
-        <Route path="profile" element={<ProfilePage />} />
+        <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
         <Route path="add-pet" />
       </Route>
 

@@ -41,9 +41,12 @@ export const LoginForm = () => {
       console.log(response);
 
       if (response.status === 200) {
+        const data = response.data;
+        localStorage.setItem("userData", JSON.stringify(data));
+
         setTimeout(() => {
           navigate("/profile");
-        }, 2000);
+        }, 1000);
       }
     } catch (error) {
       console.error("Error during signip", error);

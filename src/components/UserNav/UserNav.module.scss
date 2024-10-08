@@ -1,0 +1,36 @@
+.authContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bgImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff4df;
+}
+
+.img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.userName {
+  color: #262626;
+  font-family: Manrope;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.6px;
+}

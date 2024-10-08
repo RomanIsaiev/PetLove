@@ -1,10 +1,17 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Container } from "../UI/Container/Container";
 
 import cl from "./Header.module.scss";
 
+import { Nav } from "../Nav/Nav";
+import { AuthNav } from "../AuthNav/AuthNav";
+import { UserNav } from "../UserNav/UserNav";
+
 export const Header = () => {
   const location = useLocation();
+
+  const userData = JSON.parse(localStorage.getItem("userData"));
+
   return (
     <header className={location.pathname === "/" ? cl.headerHome : cl.header}>
       <Container>
@@ -22,50 +29,8 @@ export const Header = () => {
               <img src="/logo.svg" alt="logo" />
             )}
           </Link>
-          <nav className={cl.navContainer}>
-            <NavLink
-              className={
-                location.pathname === "/" ? cl.navItemHome : cl.navItem
-              }
-              to="/news"
-            >
-              News
-            </NavLink>
-            <NavLink
-              className={
-                location.pathname === "/" ? cl.navItemHome : cl.navItem
-              }
-              to="/notices"
-            >
-              Find pet
-            </NavLink>
-            <NavLink
-              className={
-                location.pathname === "/" ? cl.navItemHome : cl.navItem
-              }
-              to="/friends"
-            >
-              Our friends
-            </NavLink>
-          </nav>
-          <div className={cl.authContainer}>
-            <NavLink
-              className={
-                location.pathname === "/" ? cl.authLoginHome : cl.authLogin
-              }
-              to="login"
-            >
-              Log in
-            </NavLink>
-            <NavLink
-              className={
-                location.pathname === "/" ? cl.authRegHome : cl.authReg
-              }
-              to="register"
-            >
-              Registration
-            </NavLink>
-          </div>
+          <Nav />
+          {userData ? <UserNav /> : <AuthNav />}
         </div>
       </Container>
     </header>

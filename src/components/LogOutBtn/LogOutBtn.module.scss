@@ -1,0 +1,44 @@
+.logOutHome {
+  color: #fff;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+
+  padding: 15px 35px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #f6b83d;
+}
+
+.logOutHome:hover,
+.logOutHome:focus {
+  background: #fff4df;
+  color: #f6b83d;
+  transition: var(--transition);
+}
+
+.logOut {
+  color: #fff;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+
+  padding: 15px 35px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #f6b83d;
+}
+
+.logOut:hover,
+.logOut:focus {
+  background: #f9b020;
+  transition: var(--transition);
+}

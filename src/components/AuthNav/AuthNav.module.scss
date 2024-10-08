@@ -1,35 +1,3 @@
-.header {
-  position: static;
-  z-index: 9999;
-  display: block;
-  width: 100%;
-}
-
-.headerHome {
-  position: fixed;
-  z-index: 9999;
-  display: block;
-  width: 100%;
-}
-
-.headerContainerHome {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 32px 64px 0 64px;
-}
-
-.headerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 32px 0 0 0;
-}
-
-// auth
-
 .authContainer {
   display: flex;
   align-items: center;
