@@ -1,3 +1,4 @@
+import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { PetBlock } from "../../components/PetBlock/PetBlock";
 import { Title } from "../../components/Title/Title";
 import cl from "./Login.module.scss";
@@ -24,6 +25,7 @@ export const Login = () => {
         <p className={cl.desc}>
           Welcome! Please enter your credentials to login to the platform:
         </p>
+        <LoginForm />
       </div>
     </div>
   );
