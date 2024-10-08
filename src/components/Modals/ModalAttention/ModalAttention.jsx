@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import cl from "./ModalAttention.module.scss";
+import modal from "../generalModalStyles.module.scss";
 
 export const ModalAttention = ({ isOpen, onClose }) => {
   if (!isOpen) {
@@ -7,9 +8,14 @@ export const ModalAttention = ({ isOpen, onClose }) => {
   }
 
   return (
-    <div className={cl.modalOverlay} onClick={onClose} data-area="overlay">
-      <div className={cl.modalContent}>
-        <button className={cl.closeBtn} onClick={onClose} data-area="closeBtn">
+    <div className={modal.modalOverlay} onClick={onClose} data-area="overlay">
+      <div className={modal.modalContent}>
+        <button
+          type="button"
+          className={modal.closeBtn}
+          onClick={onClose}
+          data-area="closeBtn"
+        >
           <img src="/close-modal.svg" alt="close" data-area="closeBtn" />
         </button>
         <div className={cl.imgBox}>

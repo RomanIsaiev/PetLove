@@ -6,11 +6,24 @@ import cl from "./Header.module.scss";
 import { Nav } from "../Nav/Nav";
 import { AuthNav } from "../AuthNav/AuthNav";
 import { UserNav } from "../UserNav/UserNav";
+import { ModalApproveAction } from "../Modals/ModalApproveAction/ModalApproveAction";
+import { useState } from "react";
 
 export const Header = () => {
   const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const userData = JSON.parse(localStorage.getItem("userData"));
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = (event) => {
+    if (event.target.hasAttribute("data-area")) {
+      setIsModalOpen(false);
+    }
+  };
 
   return (
     <header className={location.pathname === "/" ? cl.headerHome : cl.header}>
@@ -30,9 +43,14 @@ export const Header = () => {
             )}
           </Link>
           <Nav />
-          {userData ? <UserNav /> : <AuthNav />}
+          {userData ? <UserNav openModal={openModal} /> : <AuthNav />}
         </div>
       </Container>
+      <ModalApproveAction
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        setIsModal={setIsModalOpen}
+      />
     </header>
   );
 };

@@ -14,7 +14,6 @@ export const OurFriends = () => {
       try {
         setIsLoading(true);
         await getFriends().then((response) => {
-          console.log(response);
           setFriends(response);
         });
       } catch (error) {
