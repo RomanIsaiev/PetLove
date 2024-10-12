@@ -28,6 +28,14 @@ export const getNotices = async (
   return data;
 };
 
+export const getNoticeById = async (id) => {
+  try {
+    return await instance.get(`/notices/${id}`);
+  } catch (error) {
+    error;
+  }
+};
+
 export const addFavorite = async (id) => {
   try {
     const response = await instance.post(`/notices/favorites/add/${id}`);

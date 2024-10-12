@@ -19,6 +19,8 @@ export const NoticesItem = ({ data, openModal }) => {
     _id,
   } = data;
 
+  const userData = localStorage.getItem("userData");
+
   const [isFavorite, setIsFavorite] = useState(false);
   const [userProfile, setIsUserProfile] = useState(null);
 
@@ -66,14 +68,15 @@ export const NoticesItem = ({ data, openModal }) => {
     let value = popularity;
 
     if (popularity > 10 && popularity <= 100) {
-      value = popularity;
-    } else if (popularity > 100 && popularity <= 1000) {
       value = popularity / 10;
-    } else if (popularity > 1000) {
+    } else if (popularity > 100 && popularity <= 1000) {
       value = popularity / 100;
+    } else if (popularity > 1000) {
+      value = popularity / 1000;
     }
 
-    return Math.round(value);
+    const scaledValue = value / 2;
+    return Math.round(scaledValue > 5 ? 5 : scaledValue);
   };
 
   return (
@@ -110,7 +113,7 @@ export const NoticesItem = ({ data, openModal }) => {
         <button
           className={cl.learnMore}
           onClick={() => {
-            openModal(data);
+            openModal(_id);
           }}
         >
           Learn more
@@ -118,7 +121,7 @@ export const NoticesItem = ({ data, openModal }) => {
         <button
           className={cl.favBtn}
           onClick={() => {
-            toggleFavorite();
+            userData ? toggleFavorite() : openModal(data);
           }}
         >
           <img

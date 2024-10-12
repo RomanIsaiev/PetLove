@@ -46,3 +46,102 @@
 
   margin-bottom: 10px;
 }
+
+.ratingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  margin-bottom: 20px;
+}
+
+.infoList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 27px;
+
+  margin-bottom: 16px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  color: #262626;
+  text-align: center;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 116.667% */
+  letter-spacing: -0.24px;
+  text-transform: capitalize;
+}
+
+.infoItem span {
+  color: rgba(38, 38, 38, 0.5);
+  font-family: Manrope;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 140% */
+  letter-spacing: -0.2px;
+}
+
+.comment {
+  overflow: hidden;
+  text-align: center;
+  color: #2b2b2a;
+  text-overflow: ellipsis;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.28px;
+
+  max-width: 260px;
+
+  margin: 0 auto 40px auto;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btnBase {
+  display: block;
+
+  padding: 14px 7px;
+  width: 140px;
+  border: inherit;
+  border-radius: 30px;
+
+  font-family: Manrope;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.48px;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #fff;
+  background: #f6b83d;
+}
+
+.contactBtn {
+  color: #f6b83d;
+  background: #fff4df;
+}

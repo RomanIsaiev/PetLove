@@ -21,7 +21,7 @@ export const NoticesPage = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPet, setSelectedPet] = useState(null);
+  const [itemId, setItemId] = useState("");
 
   const userData = JSON.parse(localStorage.getItem("userData"));
 
@@ -63,8 +63,8 @@ export const NoticesPage = () => {
     setPrice(value);
   };
 
-  const openModal = (petData) => {
-    setSelectedPet(petData);
+  const openModal = (id) => {
+    setItemId(id);
     setIsModalOpen(true);
   };
 
@@ -72,7 +72,7 @@ export const NoticesPage = () => {
     if (event.target.hasAttribute("data-area")) {
       setIsModalOpen(false);
     }
-    setSelectedPet(null);
+    setItemId("");
   };
 
   useEffect(() => {
@@ -130,11 +130,7 @@ export const NoticesPage = () => {
           pageSelector={pageSelector}
         />
         {userData ? (
-          <ModalNotice
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            data={selectedPet}
-          />
+          <ModalNotice isOpen={isModalOpen} onClose={closeModal} id={itemId} />
         ) : (
           <ModalAttention isOpen={isModalOpen} onClose={closeModal} />
         )}
