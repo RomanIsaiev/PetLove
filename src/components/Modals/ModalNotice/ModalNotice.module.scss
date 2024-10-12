@@ -1,0 +1,48 @@
+.imageContainer {
+  position: relative;
+
+  width: 150px;
+  margin: 0 auto 16px auto;
+}
+
+.imageBox {
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.category {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  color: #f6b83d;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.28px;
+
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: #fff4df;
+
+  text-transform: capitalize;
+}
+
+.name {
+  color: #2b2b2a;
+  font-family: Manrope;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 133.333% */
+
+  margin-bottom: 10px;
+}

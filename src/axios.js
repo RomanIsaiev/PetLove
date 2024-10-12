@@ -6,9 +6,9 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authToken");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData) {
+      config.headers.Authorization = `Bearer ${userData.token}`;
     }
     return config;
   },

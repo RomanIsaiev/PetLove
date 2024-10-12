@@ -6,6 +6,7 @@ import { Pagination } from "../../components/Pagination/Pagination";
 import cl from "./NoticesPage.module.scss";
 import { NoticesFilter } from "../../components/NoticesFilter/NoticesFilter";
 import { ModalAttention } from "../../components/Modals/ModalAttention/ModalAttention";
+import { ModalNotice } from "../../components/Modals/ModalNotice/ModalNotice";
 
 export const NoticesPage = () => {
   const [notices, setNotices] = useState([]);
@@ -20,6 +21,9 @@ export const NoticesPage = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
+
+  const userData = JSON.parse(localStorage.getItem("userData"));
 
   const pageSelector = (page) => {
     setPage(page);
@@ -59,7 +63,8 @@ export const NoticesPage = () => {
     setPrice(value);
   };
 
-  const openModal = () => {
+  const openModal = (petData) => {
+    setSelectedPet(petData);
     setIsModalOpen(true);
   };
 
@@ -67,6 +72,7 @@ export const NoticesPage = () => {
     if (event.target.hasAttribute("data-area")) {
       setIsModalOpen(false);
     }
+    setSelectedPet(null);
   };
 
   useEffect(() => {
@@ -123,7 +129,15 @@ export const NoticesPage = () => {
           totalPage={totalPages}
           pageSelector={pageSelector}
         />
-        <ModalAttention isOpen={isModalOpen} onClose={closeModal} />
+        {userData ? (
+          <ModalNotice
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            data={selectedPet}
+          />
+        ) : (
+          <ModalAttention isOpen={isModalOpen} onClose={closeModal} />
+        )}
       </div>
     </section>
   );
