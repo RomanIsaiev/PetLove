@@ -25,10 +25,6 @@ export const NoticesPage = () => {
 
   const userData = JSON.parse(localStorage.getItem("userData"));
 
-  const pageSelector = (page) => {
-    setPage(page);
-  };
-
   const getKeyword = (value) => {
     setPage(1);
     setKeyword(value);
@@ -37,30 +33,6 @@ export const NoticesPage = () => {
   const clearKeyword = () => {
     setKeyword("");
     setPage(1);
-  };
-
-  const getCategory = (value) => {
-    setCategory(value);
-  };
-
-  const getGender = (value) => {
-    setGender(value);
-  };
-
-  const getSpecies = (value) => {
-    setSpecies(value);
-  };
-
-  const getLocation = (value) => {
-    setLocation(value);
-  };
-
-  const getPopular = (value) => {
-    setPopularity(value);
-  };
-
-  const getPrice = (value) => {
-    setPrice(value);
   };
 
   const openModal = (id) => {
@@ -115,19 +87,19 @@ export const NoticesPage = () => {
           <NoticesFilter
             getKeyword={getKeyword}
             clearKeyword={clearKeyword}
-            getCategory={getCategory}
-            getGender={getGender}
-            getSpecies={getSpecies}
-            getLocation={getLocation}
-            getPopular={getPopular}
-            getPrice={getPrice}
+            getCategory={setCategory}
+            getGender={setGender}
+            getSpecies={setSpecies}
+            getLocation={setLocation}
+            getPopular={setPopularity}
+            getPrice={setPrice}
           />
         </div>
         <NoticesList notices={notices} openModal={openModal} />
         <Pagination
           currentPage={page}
           totalPage={totalPages}
-          pageSelector={pageSelector}
+          pageSelector={setPage}
         />
         {userData ? (
           <ModalNotice isOpen={isModalOpen} onClose={closeModal} id={itemId} />
