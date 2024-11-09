@@ -20,6 +20,8 @@ export const NoticesItem = ({ data, openModal }) => {
     _id,
   } = data;
 
+  const userData = localStorage.getItem("userData");
+
   const { isFavorite, toggleFavorite } = useFavorites();
   const favoriteIcon = isFavorite(_id)
     ? "/remove-favorite.svg"
@@ -83,7 +85,10 @@ export const NoticesItem = ({ data, openModal }) => {
         >
           Learn more
         </button>
-        <button className={cl.favBtn} onClick={() => toggleFavorite(data)}>
+        <button
+          className={cl.favBtn}
+          onClick={() => (userData ? toggleFavorite(data) : openModal(data))}
+        >
           <img
             src={favoriteIcon}
             alt={isFavorite(_id) ? "remove favorite" : "add to favorite"}
