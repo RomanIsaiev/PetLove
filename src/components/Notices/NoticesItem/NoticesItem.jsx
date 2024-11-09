@@ -4,6 +4,7 @@ import cl from "./NoticesItem.module.scss";
 import { addFavorite, removeFavorite } from "../../../redux/notices";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "../../../redux/users/current";
+import { useFavorites } from "../FavoritesContext/FavoritesContext";
 
 export const NoticesItem = ({ data, openModal }) => {
   const {
@@ -19,49 +20,13 @@ export const NoticesItem = ({ data, openModal }) => {
     _id,
   } = data;
 
-  const userData = localStorage.getItem("userData");
-
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [userProfile, setIsUserProfile] = useState(null);
-
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const response = await getCurrentUser();
-        setIsUserProfile(response.data);
-
-        const isFavoritePets = response.data.noticesFavorites.some(
-          (item) => item._id === _id
-        );
-        setIsFavorite(isFavoritePets);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchUserProfile();
-  }, [_id]);
-
-  const toggleFavorite = async () => {
-    try {
-      if (isFavorite) {
-        await removeFavorite(_id);
-        setIsFavorite(false);
-      } else {
-        await addFavorite(_id);
-        setIsFavorite(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favoriteIcon = isFavorite(_id)
+    ? "/remove-favorite.svg"
+    : "/unfavorite.svg";
 
   const formatDate = (birthday) => {
-    if (birthday) {
-      return format(birthday, "dd.MM.yyyy");
-    } else {
-      return "Unknown";
-    }
+    return birthday ? format(birthday, "dd.MM.yyyy") : "Unknown";
   };
 
   const formatPopularity = (popularity) => {
@@ -118,15 +83,10 @@ export const NoticesItem = ({ data, openModal }) => {
         >
           Learn more
         </button>
-        <button
-          className={cl.favBtn}
-          onClick={() => {
-            userData ? toggleFavorite() : openModal(data);
-          }}
-        >
+        <button className={cl.favBtn} onClick={() => toggleFavorite(data)}>
           <img
-            src={isFavorite ? "/remove-favorite.svg" : "/unfavorite.svg"}
-            alt="unfavorite icon"
+            src={favoriteIcon}
+            alt={isFavorite(_id) ? "remove favorite" : "add to favorite"}
           />
         </button>
       </div>

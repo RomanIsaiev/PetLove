@@ -4,11 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 
 import { App } from "./components/App";
 import "./index.css";
+import { FavoritesProvider } from "./components/Notices/FavoritesContext/FavoritesContext";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <FavoritesProvider>
+        <App />
+      </FavoritesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

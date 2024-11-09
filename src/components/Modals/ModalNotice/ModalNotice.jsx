@@ -3,17 +3,14 @@ import { format } from "date-fns";
 import modal from "../generalModalStyles.module.scss";
 import cl from "./ModalNotice.module.scss";
 import { useEffect, useState } from "react";
-import {
-  addFavorite,
-  getNoticeById,
-  removeFavorite,
-} from "../../../redux/notices";
-import { getCurrentUser } from "../../../redux/users/current";
+import { getNoticeById } from "../../../redux/notices";
+import { useFavorites } from "../../Notices/FavoritesContext/FavoritesContext";
 
 export const ModalNotice = ({ isOpen, onClose, id }) => {
   const [currentPet, setCurrentPet] = useState({});
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [userProfile, setIsUserProfile] = useState(null);
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+  console.log(id);
 
   const {
     birthday,
@@ -37,49 +34,15 @@ export const ModalNotice = ({ isOpen, onClose, id }) => {
       }
     };
 
-    const fetchUserProfile = async () => {
-      try {
-        const response = await getCurrentUser();
-        setIsUserProfile(response.data);
-
-        const isFavoritePets = response.data.noticesFavorites.some(
-          (item) => item._id === id
-        );
-        setIsFavorite(isFavoritePets);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     fetchNoticeById();
-    fetchUserProfile();
   }, [id, onClose]);
 
   if (!isOpen) {
     return null;
   }
 
-  const toggleFavorite = async () => {
-    try {
-      if (isFavorite) {
-        await removeFavorite(id);
-        setIsFavorite(false);
-      } else {
-        await addFavorite(id);
-        setIsFavorite(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const formatDate = (birthday) => {
-    if (birthday) {
-      return format(birthday, "dd.MM.yyyy");
-    } else {
-      return "Unknown";
-    }
-  };
+  const formatDate = (birthday) =>
+    birthday ? format(birthday, "dd.MM.yyyy") : "Unknown";
 
   const formatPopularity = (popularity) => {
     let value = popularity;
@@ -98,7 +61,6 @@ export const ModalNotice = ({ isOpen, onClose, id }) => {
 
   const ratingToStars = (rating) => {
     const totalStars = 5;
-
     return [...Array(totalStars)].map((_, index) => {
       return (
         <img
@@ -113,6 +75,10 @@ export const ModalNotice = ({ isOpen, onClose, id }) => {
         />
       );
     });
+  };
+
+  const handleFavoriteClick = () => {
+    toggleFavorite(currentPet);
   };
 
   return (
@@ -154,10 +120,13 @@ export const ModalNotice = ({ isOpen, onClose, id }) => {
         <div className={cl.btnContainer}>
           <button
             className={`${cl.btnBase} ${cl.addBtn}`}
-            onClick={toggleFavorite}
+            onClick={handleFavoriteClick}
           >
-            {isFavorite ? "Remove from" : "Add to"}
-            <img src="/public/heart-modal-white.svg" alt="favorite icon" />
+            {isFavorite(id) ? "Remove from" : "Add to"}
+            <img
+              src={"heart-modal-white.svg"}
+              alt={isFavorite(id) ? "remove favorite" : "add to favorite"}
+            />
           </button>
           <a
             className={`${cl.btnBase}  ${cl.contactBtn}`}
