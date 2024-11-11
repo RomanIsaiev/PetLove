@@ -27,7 +27,7 @@ export const OurFriends = () => {
   }, []);
 
   return (
-    <section className={cl.section}>
+    <section className="section">
       <div className={cl.titleContainer}>
         <Title pageTitle="Our friends" />
       </div>

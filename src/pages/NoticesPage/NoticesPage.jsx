@@ -78,7 +78,7 @@ export const NoticesPage = () => {
   }, [keyword, page, category, species, location, price, popularity, gender]);
 
   return (
-    <section className={cl.section}>
+    <section className="section">
       <div>
         <div className={cl.title}>
           <Title pageTitle="Find your favorite pet" />

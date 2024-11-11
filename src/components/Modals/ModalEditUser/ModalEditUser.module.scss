@@ -1,0 +1,28 @@
+.modalTitle {
+  color: #2b2b2a;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 133.333% */
+
+  margin-bottom: 20px;
+}
+
+.avatarBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 86px;
+  height: 86px;
+  border-radius: 100px;
+  background: #fff4df;
+
+  margin: 0 auto 12px auto;
+}
+
+.avatarBox img {
+  width: 40px;
+  height: 40px;
+}

@@ -52,10 +52,6 @@ export const RegistrationForm = () => {
       if (response.status === 201) {
         const token = response.data.token;
         localStorage.setItem("authToken", token);
-
-        setTimeout(() => {
-          navigate("/profile");
-        }, 1000);
       }
     } catch (error) {
       console.error("Error during signup:", error);

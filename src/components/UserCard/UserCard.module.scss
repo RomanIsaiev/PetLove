@@ -1,0 +1,38 @@
+.userCard {
+  position: relative;
+
+  border-radius: 60px;
+  background: #fff;
+
+  padding: 40px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.userLabel {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 10px 14px;
+  border-radius: 30px;
+  background: #f6b83d;
+
+  max-width: 80px;
+  width: 100%;
+}
+
+.userLabel p {
+  color: #fff;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.28px;
+}

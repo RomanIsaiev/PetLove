@@ -50,7 +50,7 @@ export const NewsPage = () => {
   }, [query, page]);
 
   return (
-    <section className={cl.section}>
+    <section className="section">
       <div>
         <div className={cl.titleSearchContainer}>
           <Title pageTitle="News" />

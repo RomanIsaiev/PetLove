@@ -1,13 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Title } from "../../components/Title/Title";
-import { getCurrentUser } from "../../redux/users/current";
+import { UserCard } from "../../components/UserCard/UserCard";
+import { getCurrentUserFull } from "../../redux/users/currentFull";
 
 export const ProfilePage = () => {
+  const [user, setUser] = useState({});
+
   useEffect(() => {
     const getUserData = async () => {
       try {
-        await getCurrentUser().then((response) => {
+        await getCurrentUserFull().then((response) => {
           console.log(response.data);
+          setUser(response.data);
           return response;
         });
       } catch (error) {
@@ -19,8 +23,10 @@ export const ProfilePage = () => {
   }, []);
 
   return (
-    <div>
-      <Title pageTitle="Profile" />
-    </div>
+    <section className="section">
+      <div>
+        <UserCard user={user} />
+      </div>
+    </section>
   );
 };

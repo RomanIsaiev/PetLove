@@ -263,6 +263,11 @@ span {
   z-index: 1;
 }
 
+.section {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
 .active {
   border: 1px solid #f6b83d;
 }
@@ -296,4 +301,12 @@ span {
 
 .inputTrue {
   border: 1px solid #08aa83;
+}
+
+.userInfoFill {
+  border: 1px solid #f6b83d;
+}
+
+.userInfoEmpty {
+  border: 1px solid rgba(38, 38, 38, 0.15);
 }

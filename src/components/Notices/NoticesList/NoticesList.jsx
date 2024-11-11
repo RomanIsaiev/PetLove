@@ -3,8 +3,6 @@ import { NoticesItem } from "../NoticesItem/NoticesItem";
 import cl from "./NoticesList.module.scss";
 
 export const NoticesList = ({ notices, openModal }) => {
-  console.log(notices);
-
   return (
     <ul className={cl.list}>
       {notices.map((item) => (
