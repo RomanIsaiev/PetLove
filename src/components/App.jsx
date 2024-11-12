@@ -8,6 +8,7 @@ import { Login } from "../pages/Login/Login";
 import { Registration } from "../pages/Registration/Registration";
 import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
+import { AddPetPage } from "../pages/AddPetPage/AddPetPage";
 
 export const App = () => {
   const isAuthenticated = !!localStorage.getItem("userData");
@@ -22,8 +23,8 @@ export const App = () => {
         <Route path="login" element={<Login />} />
         <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="add-pet" element={<AddPetPage />} />
         </Route>
-        <Route path="add-pet" />
       </Route>
 
       <Route path="*" />

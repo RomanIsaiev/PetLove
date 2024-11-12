@@ -4,7 +4,7 @@ export const UserBlock = ({ user, isOpen }) => {
   const { avatar, email, name, phone } = user;
 
   return (
-    <div>
+    <div className={cl.userBlock}>
       <div className={cl.avatarContainer}>
         {avatar ? (
           <img src={`${avatar}`} alt="avatar" />

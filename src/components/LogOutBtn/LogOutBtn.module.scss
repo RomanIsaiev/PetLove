@@ -42,3 +42,15 @@
   background: #f9b020;
   transition: var(--transition);
 }
+
+.profileBtn {
+  color: #f6b83d;
+
+  border-radius: 30px;
+  background: #fff4df;
+}
+
+.profileBtn:hover,
+.profileBtn:focus {
+  background: #fbe7c1;
+}

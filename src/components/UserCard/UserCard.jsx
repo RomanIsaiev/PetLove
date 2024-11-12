@@ -3,9 +3,13 @@ import { EditUserBtn } from "./EditUserBtn/EditUserBtn";
 import { UserBlock } from "./UserBlock/UserBlock";
 import cl from "./UserCard.module.scss";
 import { ModalEditUser } from "../Modals/ModalEditUser/ModalEditUser";
+import { PetsBlock } from "./PetsBlock/PetsBlock";
+import { LogOutBtn } from "../LogOutBtn/LogOutBtn";
+import { ModalApproveAction } from "../Modals/ModalApproveAction/ModalApproveAction";
 
 export const UserCard = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isApproveModal, setIsApproveModal] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -17,6 +21,16 @@ export const UserCard = ({ user }) => {
     }
   };
 
+  const openModalApprove = () => {
+    setIsApproveModal(true);
+  };
+
+  const closeModalApprove = (event) => {
+    if (event.target.hasAttribute("data-area")) {
+      setIsApproveModal(false);
+    }
+  };
+
   return (
     <div className={cl.userCard}>
       <div className={cl.userLabel}>
@@ -25,8 +39,15 @@ export const UserCard = ({ user }) => {
       </div>
       <EditUserBtn isOpen={openModal} />
       <UserBlock user={user} isOpen={openModal} />
+      <PetsBlock />
+      <LogOutBtn openModal={openModalApprove} />
 
       <ModalEditUser isOpen={isModalOpen} onClose={closeModal} user={user} />
+      <ModalApproveAction
+        isOpen={isApproveModal}
+        onClose={closeModalApprove}
+        setIsModal={setIsApproveModal}
+      />
     </div>
   );
 };
